@@ -7,11 +7,6 @@ const app = express();
 
 app.use(cors());
 
-const File = mongoose.model("File", {
-  filename: String,
-  path: String,
-});
-
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api", require("./storageRoutes"));

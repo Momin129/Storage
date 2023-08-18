@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage, limits: { fieldSize: 25 * 1024 * 1024 } });
 
 const uploadModel = async (req, res) => {
   try {
@@ -41,9 +41,9 @@ const uploadModel = async (req, res) => {
       thumbnail: thumbnail,
       path: path,
     });
-    res.status(200).json({ addModel });
+    res.status(200).json({ message: "Model Uploaded Successfully." });
   } catch (error) {
-    res.status(500).send(error);
+    res.status(400).json({ message: "Something went wrong." });
   }
 };
 
