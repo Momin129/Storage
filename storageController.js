@@ -21,7 +21,10 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage, limits: { fieldSize: 25 * 1024 * 1024 } });
+const upload = multer({
+  storage,
+  limits: { fieldSize: 25 * 1024 * 1024 },
+});
 
 const uploadModel = async (req, res) => {
   try {
@@ -56,8 +59,8 @@ const getModel = async (req, res) => {
   else Schema = Demo;
 
   try {
-    const getmodel = await Schema.find();
-    res.status(200).json(getmodel);
+    const getmodel = await Schema.find().select("thumbnail path");
+    res.status(200).json({ getmodel });
   } catch (error) {
     res.status(400).json({ message: "something went wrong" });
   }

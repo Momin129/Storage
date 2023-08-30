@@ -1,14 +1,14 @@
 const express = require("express");
 const {
   uploadModel,
-  upload,
   getModel,
   deleteModel,
+  upload,
 } = require("./storageController");
 
 const router = express.Router();
 
-router.post("/upload", upload.single("file"), uploadModel);
+router.post("/upload", upload.any(), uploadModel);
 router.get("/getModel", getModel);
 router.get("/delete", deleteModel);
 
