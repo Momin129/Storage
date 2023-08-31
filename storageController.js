@@ -28,6 +28,7 @@ const upload = multer({
 
 const uploadModel = async (req, res) => {
   try {
+    console.log(req.file);
     const { filename, path } = req.file;
     const { title, info, thumbnail, type } = req.body;
 

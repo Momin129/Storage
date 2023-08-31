@@ -8,7 +8,7 @@ const {
 
 const router = express.Router();
 
-router.post("/upload", upload.any(), uploadModel);
+router.post("/upload", upload.single("file"), uploadModel);
 router.get("/getModel", getModel);
 router.get("/delete", deleteModel);
 
