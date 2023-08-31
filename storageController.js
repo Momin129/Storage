@@ -59,7 +59,7 @@ const getModel = async (req, res) => {
   else Schema = Demo;
 
   try {
-    const getmodel = await Schema.find().select("thumbnail path");
+    const getmodel = await Schema.find();
     res.status(200).json({ getmodel });
   } catch (error) {
     res.status(400).json({ message: "something went wrong" });
