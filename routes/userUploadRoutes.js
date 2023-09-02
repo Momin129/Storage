@@ -5,7 +5,7 @@ const {
   getUserUploads,
   rejectRequest,
   deleteUserUploads,
-} = require("./userUploadControllers");
+} = require("../controllers/userUploadControllers");
 
 const router = express.Router();
 

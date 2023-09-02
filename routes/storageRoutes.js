@@ -5,7 +5,7 @@ const {
   deleteModel,
   upload,
   rejectRequest,
-} = require("./storageController");
+} = require("../controllers/storageController");
 
 const router = express.Router();
 

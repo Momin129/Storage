@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require("fs");
-const { UserUpload } = require("./userUploadModel");
+const { UserUpload } = require("../models/userUploadModel");
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,

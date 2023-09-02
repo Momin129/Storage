@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 app.use("/requests", express.static("requests"));
 
-app.use("/api", require("./storageRoutes"));
-app.use("/api", require("./userUploadRoutes"));
+app.use("/api", require("./routes/storageRoutes"));
+app.use("/api", require("./routes/userUploadRoutes"));
 
 const PORT = 4242;
 app.listen(PORT, () => {

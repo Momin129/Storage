@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require("fs");
-const { Paintings, Sculptures, Artifacts, Demo } = require("./storageModel");
+const {
+  Paintings,
+  Sculptures,
+  Artifacts,
+  Demo,
+} = require("../models/storageModel");
 
 mongoose.connect(
   "mongodb+srv://websiterandom24:g0X6LRyonXRjdcvC@cluster0.tmamprp.mongodb.net/ArtVista?retryWrites=true&w=majority",
