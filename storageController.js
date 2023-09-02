@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require("fs");
 const { Paintings, Sculptures, Artifacts, Demo } = require("./storageModel");
-const baseUrl = "http://localhost:4242";
 
 mongoose.connect(
   "mongodb+srv://websiterandom24:g0X6LRyonXRjdcvC@cluster0.tmamprp.mongodb.net/ArtVista?retryWrites=true&w=majority",
@@ -68,7 +67,7 @@ const getModel = async (req, res) => {
 };
 
 const deleteModel = async (req, res) => {
-  const filePath = `${baseUrl}/uploads/${req.query.filename}`;
+  const filePath = `./uploads/${req.query.filename}`;
   const id = new mongoose.Types.ObjectId(req.query.id);
   const type = req.query.type;
 
@@ -80,10 +79,16 @@ const deleteModel = async (req, res) => {
 
   console.log(filePath);
   try {
-    fs.unlink(filePath);
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log("Delete File successfully.");
+    });
     await Schema.deleteOne({ _id: id });
     res.json("File  deleted successfully.");
   } catch (err) {
+    console.log(err);
     res.json("File does not exists.");
   }
 };
