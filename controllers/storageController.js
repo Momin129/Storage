@@ -8,6 +8,8 @@ const {
   Demo,
 } = require("../models/storageModel");
 
+const { UserUpload } = require("../models/userUploadModel");
+
 mongoose.connect(
   "mongodb+srv://websiterandom24:g0X6LRyonXRjdcvC@cluster0.tmamprp.mongodb.net/ArtVista?retryWrites=true&w=majority",
   {
@@ -61,10 +63,16 @@ const getModel = async (req, res) => {
   if (type == "painting") Schema = Paintings;
   else if (type == "sculpture") Schema = Sculptures;
   else if (type == "artifact") Schema = Artifacts;
+  else if (type == "user") Schema = UserUpload;
   else Schema = Demo;
+  let getmodel;
 
   try {
-    const getmodel = await Schema.find();
+    if (type == "user") {
+      getmodel = await Schema.find({ status: "Aproved" });
+    } else {
+      getmodel = await Schema.find();
+    }
     res.status(200).json({ getmodel });
   } catch (error) {
     res.status(400).json({ message: "something went wrong" });
